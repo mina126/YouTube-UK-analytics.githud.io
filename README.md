@@ -579,16 +579,6 @@ Best option from category: Dan Rhodes
 
 */
 
-/* 
-
-# 1. Define variables 
-# 2. Create a CTE that rounds the average views per video 
-# 3. Select the column you need and create calculated columns from existing ones 
-# 4. Filter results by Youtube channels
-# 5. Sort results by net profits (from highest to lowest)
-
-*/
-
 SET @conversionRate = 0.02;   -- معدل التحويل
 SET @productCost = 5.0;       -- تكلفة المنتج
 SET @campaignCost = 50000.0;  -- تكلفة الحملة
