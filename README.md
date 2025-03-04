@@ -220,14 +220,14 @@ And here is a tabular representation of the expected schema for the clean data:
 */
 
 -- 1.
-SELECT
-    SUBSTRING(NOMBRE, 1, CHARINDEX('@', NOMBRE) -1) AS channel_name,  -- 2.
+SELECT 
+    SUBSTRING(NOMBRE, 1, LOCATE('@', NOMBRE) - 1) AS channel_name,
     total_subscribers,
     total_views,
     total_videos
-
-FROM
-    top_uk_youtubers_2024
+FROM 
+    testdb_2.youtube_data
+LIMIT 1000;
 ```
 
 
