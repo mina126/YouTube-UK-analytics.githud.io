@@ -266,10 +266,17 @@ Here are the data quality tests conducted:
 # Count the total number of records (or rows) are in the SQL view
 */
 
+/*
+# Count the total number of columns (or fields) are in the SQL view
+*/
+
+
 SELECT
     COUNT(*) AS no_of_rows
-FROM
-    view_uk_youtubers_2024;
+FROM 
+    testdb_2.youtube_data
+LIMIT 1000;
+
 
 ```
 
