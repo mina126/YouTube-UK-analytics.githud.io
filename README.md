@@ -240,19 +240,16 @@ LIMIT 1000;
 # 3. Select the required columns from the top_uk_youtubers_2024 SQL table 
 */
 
--- 1.
-CREATE VIEW view_uk_youtubers_2024 AS
-
--- 2.
-SELECT
-    CAST(SUBSTRING(NOMBRE, 1, CHARINDEX('@', NOMBRE) -1) AS VARCHAR(100)) AS channel_name, -- 2. 
+CREATE VIEW view_uk_youtubers_2024 AS 
+SELECT 
+    SUBSTRING(NOMBRE, 1, LOCATE('@', NOMBRE) - 1) AS channel_name,
     total_subscribers,
     total_views,
     total_videos
+FROM 
+    testdb_2.youtube_data
+LIMIT 1000;
 
--- 3.
-FROM
-    top_uk_youtubers_2024
 
 ```
 
