@@ -286,11 +286,11 @@ FROM
 
 
 SELECT
-    COUNT(*) AS column_count
-FROM
-    INFORMATION_SCHEMA.COLUMNS
-WHERE
-    TABLE_NAME = 'view_uk_youtubers_2024'
+    COUNT(*) AS no_of_rows
+FROM 
+    testdb_2.youtube_data
+LIMIT 1000;
+
 ```
 ### Output 
 ![Column count check](assets/images/2_column_count_check.png)
