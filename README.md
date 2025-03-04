@@ -579,14 +579,20 @@ Best option from category: Dan Rhodes
 
 */
 
+/* 
 
--- 1. 
-DECLARE @conversionRate FLOAT = 0.02;		-- The conversion rate @ 2%
-DECLARE @productCost FLOAT = 5.0;			-- The product cost @ $5
-DECLARE @campaignCost FLOAT = 50000.0;		-- The campaign cost @ $50,000	
+# 1. Define variables 
+# 2. Create a CTE that rounds the average views per video 
+# 3. Select the column you need and create calculated columns from existing ones 
+# 4. Filter results by Youtube channels
+# 5. Sort results by net profits (from highest to lowest)
 
+*/
 
--- 2.  
+SET @conversionRate = 0.02;   -- معدل التحويل
+SET @productCost = 5.0;       -- تكلفة المنتج
+SET @campaignCost = 50000.0;  -- تكلفة الحملة
+-- 2. 
 WITH ChannelData AS (
     SELECT 
         channel_name,
@@ -594,9 +600,8 @@ WITH ChannelData AS (
         total_videos,
         ROUND((CAST(total_views AS FLOAT) / total_videos), -4) AS rounded_avg_views_per_video
     FROM 
-        youtube_db.dbo.view_uk_youtubers_2024
+        testdb_2.youtube_data
 )
-
 -- 3. 
 SELECT 
     channel_name,
@@ -606,13 +611,9 @@ SELECT
     ((rounded_avg_views_per_video * @conversionRate * @productCost) - @campaignCost) AS net_profit
 FROM 
     ChannelData
-
-
 -- 4. 
 WHERE 
     channel_name in ('NoCopyrightSounds', 'DanTDM', 'Dan Rhodes')    
-
-
 -- 5.  
 ORDER BY
 	net_profit DESC
